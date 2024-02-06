@@ -15,10 +15,13 @@ const shoppingListEl = document.getElementById("shopping-list")
 
 addButtonEl.addEventListener("click", function() {
     let inputValue = inputFieldEl.value
-    
-    push(shoppingListInDB, inputValue)
-    
-    clearInputFieldEl()
+    if(inputValue !== ""){
+
+        push(shoppingListInDB, inputValue)
+        clearInputFieldEl()
+    }else{
+        showToast("Please enter a value!");
+    }
 })
 
 onValue(shoppingListInDB, function(snapshot) {
@@ -60,4 +63,13 @@ function appendItemToShoppingListEl(item) {
     })
 
     shoppingListEl.append(newEl)
+}
+
+function showToast(message) {
+    var toast = document.getElementById("toast");
+    toast.textContent = message;
+    toast.classList.remove("hide");
+    setTimeout(function() {
+        toast.classList.add("hide");
+    }, 2000); // Hide after 3 seconds
 }
