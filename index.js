@@ -71,5 +71,5 @@ function showToast(message) {
     toast.classList.remove("hide");
     setTimeout(function() {
         toast.classList.add("hide");
-    }, 2000); // Hide after 3 seconds
+    }, 2000); // Hide after 2 seconds
 }
